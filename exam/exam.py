@@ -84,4 +84,7 @@ def reverse_string(sentence):
 
 # dateから2016年4月1日までの日数を返してください
 def days_from_date(point):
-    pass
+    import datetime
+    a = datetime.date(2016, 4, 1)
+    (a - point).days
+    return (datetime.date(2016, 4, 1) - point).days
