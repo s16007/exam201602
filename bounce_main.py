@@ -67,6 +67,19 @@ class Paddle:
     def turn_right(self, event):
         self.x = 2
 
+class Block:
+    def __init__(self, canvas, x, y, color):
+        self.canvas = canvas
+        self.pos_x = x
+        self.pos_y = y
+        self.id = canvas.create_rectangle(0, 0, 50, 20, fill=color)
+        self.canvas.move(self.id, 25 + self.pos_x * 50, 25 + self.pos_y * 20)
+
+    def delete(self):
+        self.canvas.delete(self.id)
+
+COLORS = ("white", "black")
+
 
 tk = Tk()
 tk.title("Game")
@@ -75,6 +88,7 @@ tk.wm_attributes("-topmost", 1)
 c = Canvas(tk, width=500, height=400, bd=0, highlightthickness=0)
 c.pack()
 tk.update()
+blocks = []
 
 p = Paddle(c, 'blue')
 ball = Ball(c, p, 'red')
